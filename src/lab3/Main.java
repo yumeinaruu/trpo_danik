@@ -1,10 +1,7 @@
 package lab3;
 
 import java.io.*;
-import java.util.Scanner;
 
-//Преобразовать текст так, чтобы каждое слово, не содержащее неалфавитных символов, начиналось с заглавной буквы.
-//При выполнении следующих заданий для вывода результатов создавать новую директорию и файл средствами класса File.
 public class Main {
     public static void main(String[] args) {
         String directoryName = System.getProperty("user.dir");
