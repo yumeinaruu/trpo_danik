@@ -24,7 +24,7 @@ class Node {
 
 public class Main {
     public static void main(String[] args) {
-        String text = "Peek shook leak";
+        String text = "Peek shook";
 
         // Заполните wordFrequency частотами слов
         Map<String, Integer> wordFrequency = new HashMap<>();
@@ -54,6 +54,25 @@ public class Main {
         // Замените слова в тексте их кодами
         String encodedText = encodeText(text, wordToCode);
         System.out.println("Закодированный текст: " + encodedText);
+        System.out.println("Раскодированный текст: " + decodeText(encodedText, root));
+    }
+
+    //метод для раскадирования текста
+    private static String decodeText(String encodedText, Node root) {
+        StringBuilder result = new StringBuilder();
+        Node current = root;
+        for (char c : encodedText.toCharArray()) {
+            if (c == '0') {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+            if (current.left == null && current.right == null) {
+                result.append(current.word).append(" ");
+                current = root;
+            }
+        }
+        return result.toString().trim();
     }
 
     private static void generateCodes(Node node, String code, Map<String, String> wordToCode) {
