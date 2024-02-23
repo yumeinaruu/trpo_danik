@@ -1,4 +1,4 @@
-package lab4;
+package lab4.workers;
 
 public class Group {
     private String groupName;
@@ -50,11 +50,9 @@ public class Group {
 
     @Override
     public String toString() {
-        return "Group{" +
-                "groupName='" + groupName + '\'' +
-                ", firstWorker=" + firstWorker +
-                ", secondWorker=" + secondWorker +
-                ", phase='" + phase + '\'' +
-                '}';
+        return "Название группы: " + groupName+
+                firstWorker +
+                secondWorker +
+                " | Фаза: " + phase + "\n";
     }
 }

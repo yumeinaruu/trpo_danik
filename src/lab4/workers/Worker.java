@@ -1,4 +1,6 @@
-package lab4;
+package lab4.workers;
+
+import lab4.workers.Group;
 
 import java.util.Scanner;
 
@@ -26,5 +28,10 @@ public class Worker {
 
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    @Override
+    public String toString() {
+        return " | Работник: " + fio;
     }
 }
