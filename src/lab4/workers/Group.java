@@ -50,7 +50,7 @@ public class Group {
 
     @Override
     public String toString() {
-        return "Название группы: " + groupName+
+        return "Название группы: " + groupName +
                 firstWorker +
                 secondWorker +
                 " | Фаза: " + phase + "\n";

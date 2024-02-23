@@ -1,17 +1,20 @@
 package lab4.search;
 
+import lab4.Main;
 import lab4.project.Project;
 import lab4.workers.Group;
 
 public class Search {
-    Project project;
-    public void printGroups() {
+
+
+    public void printGroups(Project project) {
         for (Group group : project.getGroups()) {
-            System.out.println(group);
+            System.out.print(group);
         }
+        System.out.println("------------------");
     }
 
-    public void searchByFio(String fio) {
+    public void searchByFio(String fio, Project project) {
         for (Group group : project.getGroups()) {
             if (group.getFirstWorker().getFio().equals(fio) || group.getSecondWorker().getFio().equals(fio)) {
                 System.out.println(group);
@@ -19,7 +22,7 @@ public class Search {
         }
     }
 
-    public void searchByPhase(String phase) {
+    public void searchByPhase(String phase, Project project) {
         for (Group group : project.getGroups()) {
             if (group.getPhase().equals(phase)) {
                 System.out.println(group);
@@ -27,7 +30,7 @@ public class Search {
         }
     }
 
-    public void searchByGroupName(String groupName) {
+    public void searchByGroupName(String groupName, Project project) {
         for (Group group : project.getGroups()) {
             if (group.getGroupName().equals(groupName)) {
                 System.out.println(group);
@@ -35,7 +38,7 @@ public class Search {
         }
     }
 
-    public void searchByFioAndPhase(String fio, String phase) {
+    public void searchByFioAndPhase(String fio, String phase, Project project) {
         for (Group group : project.getGroups()) {
             if ((group.getFirstWorker().getFio().equals(fio) || group.getSecondWorker().getFio().equals(fio)) && group.getPhase().equals(phase)) {
                 System.out.println(group);
@@ -43,7 +46,7 @@ public class Search {
         }
     }
 
-    public void searchByFioAndGroupName(String fio, String groupName) {
+    public void searchByFioAndGroupName(String fio, String groupName, Project project) {
         for (Group group : project.getGroups()) {
             if ((group.getFirstWorker().getFio().equals(fio) || group.getSecondWorker().getFio().equals(fio)) && group.getGroupName().equals(groupName)) {
                 System.out.println(group);
@@ -51,7 +54,7 @@ public class Search {
         }
     }
 
-    public void searchByPhaseAndGroupName(String phase, String groupName) {
+    public void searchByPhaseAndGroupName(String phase, String groupName, Project project) {
         for (Group group : project.getGroups()) {
             if (group.getPhase().equals(phase) && group.getGroupName().equals(groupName)) {
                 System.out.println(group);

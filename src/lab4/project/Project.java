@@ -1,5 +1,6 @@
 package lab4.project;
 
+import lab4.exceptions.InputMismatchException;
 import lab4.workers.Group;
 import lab4.workers.Worker;
 
@@ -19,22 +20,36 @@ public class Project extends PhasesStorage {
     public void assignTheGroup(Group group) {
         System.out.println("На какую фазу записать эту группу?");
         System.out.println("""
-                1. Разработка ТЗ
+                1.Разработка ТЗ
                 2.Проектирование
                 3.Кодирование
                 4.Тестирование
                 5.Пробная эксплуатация""");
-        int phase = scanner.nextInt();
-        group.setPhase(phases[phase - 1]);
+        boolean check = true;
+        while (check) {
+            try {
+                int phase = scanner.nextInt();
+                if (phase <= 5 && phase >= 1) {
+                    group.setPhase(phases[phase - 1]);
+                    check = false;
+                } else {
+                    throw new InputMismatchException();
+                }
+            } catch (InputMismatchException e) {
+                System.out.println(e);
+            }
+        }
     }
 
-    //расписание сдачи работ по проекту согласно последовательности разработки
     public void schedule() {
         date = LocalDate.now().plusDays(7);
+        System.out.println("------------------");
+        System.out.println("График сдачи работ: ");
         for (Group group : groups) {
             System.out.println(group.getPhase() + " - с " + date + " по " + date.plusDays(7));
             date = date.plusDays(7);
         }
+        System.out.println("------------------");
     }
 
     public void setGroups() {
