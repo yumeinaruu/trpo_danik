@@ -24,6 +24,7 @@ public class Spa extends Thread {
                 sum += prices[Integer.parseInt(procedure) - 1];
             }
             System.out.println("Сумма к оплате: " + sum + " рублей\n");
+            Thread.sleep(1500);
             sem.release();
         } catch (InterruptedException e) {
             System.out.println(e);
