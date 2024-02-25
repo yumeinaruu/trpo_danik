@@ -13,12 +13,11 @@ public class MainTwo {
         int size = n * m;
         int[] temp = new int[size];
         System.out.println("Введите элементы матрицы: ");
-        for (int i = 0; i < temp.length; i++) {
+  /*      for (int i = 0; i < temp.length; i++) {
             temp[i] = scanner.nextInt();
-        }
+        }*/
 
-       /* Arrays.stream(temp).forEach();
-        System.out.println(Arrays.toString(temp));*/
+        Arrays.setAll(temp, i -> scanner.nextInt());
 
         int maxInc = 0;
         int maxDec = 0;
