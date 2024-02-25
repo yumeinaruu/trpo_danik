@@ -22,13 +22,13 @@ public class Main {
         // строим кодовое дерево с помощью алгоритма Хаффмана
         CodeTreeNode tree = huffman(codeTreeNodes);
 
-        // генерируем таблицу префиксных кодов для кодируемых символов с помощью кодового дерева
+        // генерируем таблицу кодов для кодируемых символов с помощью кодового дерева
         TreeMap<Character, String> codes = new TreeMap<>();
         for (Character c : frequencies.keySet()) {
             codes.put(c, tree.getCodeForCharacter(c, ""));
         }
 
-        System.out.println("Таблица префиксных кодов: " + codes.toString());
+        System.out.println("Таблица кодов: " + codes.toString());
 
         // кодируем текст, заменяем сиволы соответствующими кодами
         StringBuilder encoded = new StringBuilder();
