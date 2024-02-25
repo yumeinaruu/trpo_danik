@@ -17,28 +17,31 @@ public class MainTwo {
             temp[i] = scanner.nextInt();
         }
 
+       /* Arrays.stream(temp).forEach();
+        System.out.println(Arrays.toString(temp));*/
+
         int maxInc = 0;
         int maxDec = 0;
         int dec = 1;
         int inc = 1;
         for (int i = 1; i < temp.length; i++) {
-                if (temp[i] == temp[i - 1] - 1) {
-                    dec++;
-                } else {
-                    if (dec > maxDec) {
-                        maxDec = dec;
-                    }
-                    dec = 1;
+            if (temp[i] == temp[i - 1] - 1) {
+                dec++;
+            } else {
+                if (dec > maxDec) {
+                    maxDec = dec;
                 }
+                dec = 1;
+            }
 
-                if (temp[i] == temp[i - 1] + 1) {
-                    inc++;
-                } else {
-                    if (inc > maxInc) {
-                        maxInc = inc;
-                    }
-                    inc = 1;
+            if (temp[i] == temp[i - 1] + 1) {
+                inc++;
+            } else {
+                if (inc > maxInc) {
+                    maxInc = inc;
                 }
+                inc = 1;
+            }
         }
 
         if (dec > maxDec) {
