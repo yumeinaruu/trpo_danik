@@ -1,5 +1,6 @@
 package lab1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -9,44 +10,46 @@ public class Main {
         int n = scanner.nextInt();
         System.out.println("Введите количество столбцов матрицы: ");
         int m = scanner.nextInt();
-        int[][] matrix = new int[n][m];
+        int size = n * m;
+        int[] matrix = new int[size];
         System.out.println("Введите элементы матрицы: ");
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                matrix[i][j] = scanner.nextInt();
-            }
-        }
+  /*      for (int i = 0; i < temp.length; i++) {
+            temp[i] = scanner.nextInt();
+        }*/
+
+        Arrays.setAll(matrix, i -> scanner.nextInt());
 
         int maxInc = 0;
         int maxDec = 0;
-        for (int i = 0; i < n; i++) {
-            int inc = 1;
-            int dec = 1;
-            for (int j = 0; j < m - 1; j++) {
-                if (matrix[i][j] < matrix[i][j + 1]) {
-                    inc++;
-                } else {
-                    if (inc > maxInc) {
-                        maxInc = inc;
-                    }
-                    inc = 1;
+        int dec = 1;
+        int inc = 1;
+        for (int i = 1; i < matrix.length; i++) {
+            if (matrix[i] == matrix[i - 1] - 1) {
+                dec++;
+            } else {
+                if (dec > maxDec) {
+                    maxDec = dec;
                 }
-                if (matrix[i][j] > matrix[i][j + 1]) {
-                    dec++;
-                } else {
-                    if (dec > maxDec) {
-                        maxDec = dec;
-                    }
-                    dec = 1;
+                dec = 1;
+            }
+
+            if (matrix[i] == matrix[i - 1] + 1) {
+                inc++;
+            } else {
+                if (inc > maxInc) {
+                    maxInc = inc;
                 }
-            }
-            if (inc > maxInc) {
-                maxInc = inc;
-            }
-            if (dec > maxDec) {
-                maxDec = dec;
+                inc = 1;
             }
         }
+
+        if (dec > maxDec) {
+            maxDec = dec;
+        }
+        if (inc > maxInc) {
+            maxInc = inc;
+        }
+
         System.out.println("Количество возрастающих элементов: " + maxInc);
         System.out.println("Количество убывающих элементов: " + maxDec);
     }
